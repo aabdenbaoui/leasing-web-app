@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.udacity.jwdnd.course1</groupId>
-    <artifactId>cloudstorage</artifactId>
+    <artifactId>LeasingWebAPP</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Propriety Leasing Web App</name>
     <description>Propriety Leasing Web App</description>
