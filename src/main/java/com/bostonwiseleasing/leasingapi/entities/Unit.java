@@ -15,7 +15,6 @@ public class Unit {
     private boolean isReserved;
     private LocalDate unitAvailableFrom;
     private int leasingInfoId;
-
     private String unitDescription;
     private double carpetArea;
     private int unitNumber;
