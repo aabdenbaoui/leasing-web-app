@@ -1,4 +1,4 @@
-package com.bostonwiseleasing.leasingapi.entities;
+package com.bostonwiseleasing.leasingapi.entities.enums;
 
 public enum State {
     ALABAMA("AL"),

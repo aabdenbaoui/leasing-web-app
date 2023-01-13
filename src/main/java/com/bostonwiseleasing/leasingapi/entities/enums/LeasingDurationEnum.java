@@ -1,4 +1,4 @@
-package com.bostonwiseleasing.leasingapi.entities;
+package com.bostonwiseleasing.leasingapi.entities.enums;
 
 public enum LeasingDurationEnum {
     OneMonthLeasing("1 month"),

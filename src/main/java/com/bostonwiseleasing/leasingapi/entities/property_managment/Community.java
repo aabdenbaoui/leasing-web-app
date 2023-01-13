@@ -1,4 +1,4 @@
-package com.bostonwiseleasing.leasingapi.entities;
+package com.bostonwiseleasing.leasingapi.entities.property_managment;
 
 public class Community {
     private int communityId;

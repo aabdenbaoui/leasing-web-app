@@ -1,4 +1,4 @@
-package com.bostonwiseleasing.leasingapi.entities;
+package com.bostonwiseleasing.leasingapi.entities.property_managment;
 
 import java.time.LocalDate;
 

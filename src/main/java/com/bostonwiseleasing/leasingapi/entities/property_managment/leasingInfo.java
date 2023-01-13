@@ -1,4 +1,7 @@
-package com.bostonwiseleasing.leasingapi.entities;
+package com.bostonwiseleasing.leasingapi.entities.property_managment;
+
+import com.bostonwiseleasing.leasingapi.entities.enums.LeasingDurationEnum;
+import com.bostonwiseleasing.leasingapi.entities.enums.LeasingTypeEnum;
 
 public class leasingInfo {
     private int leasingInfoId;

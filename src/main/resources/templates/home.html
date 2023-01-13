@@ -18,9 +18,12 @@
             <div id="contentDiv" style="clear: right;">
                 <nav style="clear: right;">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-item nav-link active" id="nav-files-tab" data-toggle="tab" href="#nav-files" role="tab" aria-controls="nav-files" aria-selected="true">Files</a>
-                        <a class="nav-item nav-link" id="nav-notes-tab" data-toggle="tab" href="#nav-notes" role="tab" aria-controls="nav-notes" aria-selected="false">Notes</a>
-                        <a class="nav-item nav-link" id="nav-credentials-tab" data-toggle="tab" href="#nav-credentials" role="tab" aria-controls="nav-credentials" aria-selected="false">Credentials</a>
+                        <a class="nav-item nav-link active" id="nav-renters-tab" data-toggle="tab" href="#nav-renters" role="tab" aria-controls="nav-renters" aria-selected="true">Renters</a>
+                        <a class="nav-item nav-link" id="nav-units-tab" data-toggle="tab" href="#nav-units" role="tab" aria-controls="nav-unites" aria-selected="false">Units</a>
+                        <a class="nav-item nav-link" id="nav-service-request-tab" data-toggle="tab" href="#nav-service-requests" role="tab" aria-controls="nav-service-requests" aria-selected="false">Service Requests</a>
+                        <a class="nav-item nav-link" id="nav-applications-tab" data-toggle="tab" href="#nav-applications" role="tab" aria-controls="nav-applications" aria-selected="false">Applications</a>
+                        <a class="nav-item nav-link" id="nav-staffs-tab" data-toggle="tab" href="#nav-staffs" role="tab" aria-controls="nav-staffs" aria-selected="false">Staffs</a>
+                        <a class="nav-item nav-link" id="nav-payments-tab" data-toggle="tab" href="#nav-payments" role="tab" aria-controls="nav-payments" aria-selected="false">Payments</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -60,8 +63,8 @@
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="nav-notes" role="tabpanel" aria-labelledby="nav-notes-tab">
-                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" onclick="showNoteModal()">
+                    <div class="tab-pane fade" id="nav-renters" role="tabpanel" aria-labelledby="nav-renters-tab">
+                        <button style="margin: 0.25em;" type="button" class="btn btn-info float-right" onclick="showRenterModal()">
                             + Add a New Note
                         </button>
 
@@ -87,32 +90,44 @@
                             </table>
                         </div>
 
-                        <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="rentalModal" tabindex="-1" role="dialog" aria-labelledby="renterModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="noteModalLabel">Note</h5>
+                                        <h5 class="modal-title" id="renterModalLabel">Renter Info</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
                                         <form action="#" method="POST">
-                                            <input type="hidden" name="noteId" id="note-id">
+                                            <input type="hidden" name="renterId" id="renter-id">
                                             <div class="form-group">
-                                                <label for="note-title" class="col-form-label">Title</label>
-                                                <input type="text" name= "noteTitle" class="form-control" id="note-title" maxlength="20" required>
+                                                <label for="firstname" class="col-form-label">First Name</label>
+                                                <input type="text" name= "firstName" class="form-control" id="firstname" maxlength="20" required>
                                             </div>
                                             <div class="form-group">
-                                                <label for="note-description" class="col-form-label">Description</label>
-                                                <textarea class="form-control" name="noteDescription" id="note-description" rows="5" maxlength="1000" required></textarea>
+                                                <label for="lastname" class="col-form-label">Last Name</label>
+                                                <input type="text" name= "lastName" class="form-control" id="lastname" maxlength="20" required>
                                             </div>
-                                            <button id="noteSubmit" type="submit" class="d-none"></button>
+                                            <div class="form-group">
+                                                <label for="identity-proof-document" class="col-form-label">Identity Proof Document</label>
+                                                <textarea class="form-control" name="identityProofDocument" id="identity-proof-document" rows="5" maxlength="1000" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="identity-proof-document-id" class="col-form-label">Identity Proof Document</label>
+                                                <textarea class="form-control" name="identityProofDocument" id="identity-proof-document-id" rows="5" maxlength="1000" required></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="permanent-address" class="col-form-label">Permanent Address</label>
+                                                <textarea class="form-control" name="permanentAddress" id="permanent-address" rows="5" maxlength="1000" required></textarea>
+                                            </div>
+                                            <button id="renterSubmit" type="submit" class="d-none"></button>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" onclick="$('#noteSubmit').click();">Save changes</button>
+                                        <button type="button" class="btn btn-primary" onclick="$('#renterSubmit').click();">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -192,11 +207,14 @@
 
         <!--For opening the note modal-->
         <script type="text/javascript">
-            // For opening the note modal
-            function showNoteModal(noteId, noteTitle, noteDescription) {
-                $('#note-id').val(noteId ? noteId : '');
-                $('#note-title').val(noteTitle ? noteTitle : '');
-                $('#note-description').val(noteDescription ? noteDescription : '');
+            // For opening the renter modal
+            function showRenterModal(renterId, firstName, lastName, identityProofDocument, identityProofDocumentId, permanentAddress) {
+                $('#renter-id').val(renterId ? renterId : '');
+                $('#firstname').val(firstName ? firstName : '');
+                $('#lastname').val(lastName ? lastName : '');
+                $('#identity-proof-document').val(identityProofDocument ? identityProofDocument : '');
+                $('#identity-proof-document-id').val(identityProofDocumentId ? identityProofDocumentId : '');
+                $('#permanent-address').val(permanentAddress ? permanentAddress : '');
                 $('#noteModal').modal('show');
             }
 
